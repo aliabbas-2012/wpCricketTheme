@@ -217,3 +217,25 @@ function gdlr_cricket_create_team_meta_box() {
     echo '<textarea name="gdlr-cricket-player-settings">' . esc_textarea($player_val) . '</textarea>';
     echo '</div>';
 }
+
+//register this function
+add_action('pre_post_update', 'gdlr_soccer_save_player_meta_box');
+
+function gdlr_cricket_save_team_meta_box($post_id) {
+
+    // verify nonce & user's permission
+    if (!isset($_POST['team_meta_box_nonce'])) {
+        return;
+    }
+    if (!wp_verify_nonce($_POST['team_meta_box_nonce'], 'team_meta_box')) {
+        return;
+    }
+    if (!current_user_can('edit_post', $post_id)) {
+        return;
+    }
+
+    // save value
+    if (isset($_POST['gdlr-cricket-player-settings'])) {
+        update_post_meta($post_id, 'gdlr-cricket-player-settings', gdlr_lms_preventslashes($_POST['gdlr-cricket-player-settings']));
+    }
+}
