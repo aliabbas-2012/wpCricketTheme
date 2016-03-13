@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Goodlayers Soccer
+ * Plugin Name: Cricket 
  * Plugin URI: http://goodlayers.com/
  * Description: 
  * Version: 1.0.0
@@ -11,6 +11,7 @@
 	
 	include_once('framework/meta-template.php');
 	include_once('framework/player-option.php');
+	include_once('framework/team-infromation.php');
 	include_once('framework/league-table-option.php');
 	include_once('framework/fixtures-results-option.php');
 	include_once('framework/admin-option.php');
